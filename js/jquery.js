@@ -9,6 +9,7 @@ $('.btn-continue').click(function(){
     window.open("index.html","_self")
 })
 
+// Inputting data into LocalStorage
 $('.btn-full').click(function(){
     console.log("submit button clicked")
     var title = $('#InputName').val()
@@ -27,19 +28,10 @@ var products = JSON.parse(window.localStorage.getItem('products'))
  console.log(products)
  if(products == null)
  {
-    // var products = [
-    //     {
-    //     title:"Mother Board",
-    //     img:"images/motherboard.jpg",
-    //     price:"200",
-    //     description:"Intel Z390 GAMING Motherboard with 10+2 Digital PWM Design, 2-Way CrossFire™ Multi-Graphics, USB 3.1 Gen2 Type-A, M.2 Thermal Guard, Intel GbE LAN with cFosSpeed, Smart Fan 5, Dual M.2, Dual Armor with Ultra Durable™ Technology, DualBIOS, CEC 2019"
-    //     }
-    //  ]
-
     var products = [
         {
         title:"Whatever",
-        img:"img/products/1.jpg",
+        img:"img/intro/1.jpg",
         price:"200",
         description:"Something"
         }
@@ -47,5 +39,15 @@ var products = JSON.parse(window.localStorage.getItem('products'))
 
      window.localStorage.setItem('products',JSON.stringify(products))
  }
+
+ $.each(products,function(i,val){
+    var insertproduct = $('<div class="intro-item"><figure><img src="" alt="..."></figure><div class="product-info"><h5></h5><p></p><a href="#" class="site-btn btn-line">ADD TO CART</a></div></div>')
+    //console.log(insertproduct)
+    insertproduct.children("figure").children("img").attr('src',products[i].img)
+    insertproduct.children("div").children("h5").text(products[i].title)
+    //insertproduct.children("div").children("p").text(localStorageproduct[i].description)
+    insertproduct.children("div").children("p").text(products[i].price + "$")
+    $('.intro-slider').append(insertproduct)
+})
 
  
