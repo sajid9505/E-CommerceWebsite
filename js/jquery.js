@@ -41,12 +41,11 @@ var products = JSON.parse(window.localStorage.getItem('products'))
  }
 
  $.each(products,function(i,val){
-    var insertproduct = $('<div class="intro-item"><figure><img src="" alt="..."></figure><div class="product-info"><h5></h5><p></p><a href="#" class="site-btn btn-line">ADD TO CART</a></div></div>')
-    //console.log(insertproduct)
-    insertproduct.children("figure").children("img").attr('src',products[i].img)
-    insertproduct.children("div").children("h5").text(products[i].title)
-    //insertproduct.children("div").children("p").text(localStorageproduct[i].description)
-    insertproduct.children("div").children("p").text(products[i].price + "$")
+    var insertproduct = $('<ul class="slidee"><li><div class="intro-item"><figure><img src="" alt="..."></figure><div class="product-info"><h5></h5><p></p><a href="#" class="site-btn btn-line">ADD TO CART</a></div></div><li></ul>')
+    insertproduct.children("li").children("div").children("figure").children("img").attr('src',products[i].img)
+    insertproduct.children("li").children("div").children("div").children("h5").text(products[i].title)
+    console.log(products[i].title)
+    insertproduct.children("li").children("div").children("div").children("p").text(products[i].price + "$")
     $('.intro-slider').append(insertproduct)
 })
 
