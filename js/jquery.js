@@ -27,8 +27,9 @@ $('.btn-full').click(function(){
     var title = $('#InputName').val()
     var img = $('#InputImage').val()
     var price = $('#InputPrice').val()
+    var quantity = $('#Quantity').val()
     var description = $('#InputDescription').val()
-    products.push({title:title,img:img,price:price,description:description})
+    products.push({title:title,img:img,price:price,quantity:quantity,description:description})
     console.log(products)
     
     window.localStorage.setItem('products',JSON.stringify(products))
@@ -45,6 +46,7 @@ var products = JSON.parse(window.localStorage.getItem('products'))
         title:"Whatever",
         img:"img/intro/1.jpg",
         price:"200",
+        quantity: "10",
         description:"Something"
         }
      ]
@@ -61,7 +63,7 @@ var products = JSON.parse(window.localStorage.getItem('products'))
     $('.intro-slider').append(insertproduct)
 })
 
-
+//taking cartnumbers
 var cart_items = []
 $('.cartnumber').click(function(){
    var cart_item = []
