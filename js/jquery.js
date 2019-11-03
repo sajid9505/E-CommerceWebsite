@@ -85,11 +85,23 @@ $('.cartnumber').click(function(){
 $('.cart-remove-btn').click(function(){
     remove_cart_items = JSON.parse(window.localStorage.getItem('cart_items'))
     var remove_cart_item = $(this).parent().parent().prev().prev().children().children("span").text()
-    //console.log(remove_cart_item)
     remove_cart_items.splice($.inArray(remove_cart_item, remove_cart_items),1);
-    //console.log(remove_cart_items)
     window.localStorage.setItem("cart_items",JSON.stringify(remove_cart_items))
     location.reload(true)
 
 
+})
+
+$('.cart-quantity-input').blur(function(){
+    var total_price_interms_of_quantity = $(this).text()
+    var quantiy_per_item = $(this).val()
+    var total_price_interms_of_quantity = total_price_interms_of_quantity * quantiy_per_item
+    $(this).text(total_price_interms_of_quantity)
+
+    var sum = 0 
+    $('.cart-price-span').each(function(){
+     sum += parseFloat($(this).text())
+    })
+    $('.cart-total-price').text(sum + '$')
+    console.log(sum)
 })
