@@ -56,7 +56,7 @@ var products = JSON.parse(window.localStorage.getItem('products'))
 
  //viewingproducts needs help pls
  $.each(products,function(i,val){
-    var insertproduct = $('<ul class="slidee"><li><div class="intro-item"><figure><img src="" alt="..."><div class="product-info"><h5></h5><p></p><a href="#" class="site-btn btn-line cartnumber">ADD TO CART</a></div></div></figure><li></ul>')
+    var insertproduct = $('<ul class="slidee"><li><div class="intro-item"><figure><img src="" alt="..."><div class="product-info"><h5></h5><p></p><a href="product.html" class="site-btn btn-line cartnumber">ADD TO CART</a></div></div></figure><li></ul>')
     insertproduct.children("li").children("div").children("figure").children("img").attr('src',products[i].img)
     insertproduct.children("li").children("div").children("figure").children("div").children("h5").text(products[i].title)
     insertproduct.children("li").children("div").children("figure").children("div").children("p").text(products[i].price + "$")
@@ -80,3 +80,4 @@ $('.cartnumber').click(function(){
    window.localStorage.setItem('cart_items',JSON.stringify(cart_items))
    location.reload(true)
 })
+
