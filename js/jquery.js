@@ -43,11 +43,11 @@ var products = JSON.parse(window.localStorage.getItem('products'))
  {
     var products = [
         {
-        title:"Whatever",
+        title:"Shades",
         img:"img/intro/1.jpg",
         price:"200",
         quantity: "10",
-        description:"Something"
+        description:"Summer Shades"
         }
      ]
 
