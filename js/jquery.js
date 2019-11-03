@@ -81,3 +81,15 @@ $('.cartnumber').click(function(){
    location.reload(true)
 })
 
+// Cartremove
+$('.cart-remove-btn').click(function(){
+    remove_cart_items = JSON.parse(window.localStorage.getItem('cart_items'))
+    var remove_cart_item = $(this).parent().parent().prev().prev().children().children("span").text()
+    //console.log(remove_cart_item)
+    remove_cart_items.splice($.inArray(remove_cart_item, remove_cart_items),1);
+    //console.log(remove_cart_items)
+    window.localStorage.setItem("cart_items",JSON.stringify(remove_cart_items))
+    location.reload(true)
+
+
+})
