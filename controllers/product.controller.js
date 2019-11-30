@@ -17,14 +17,14 @@ module.exports.new = function(request, response){
 
 module.exports.home = function(request, response){
     //save(request.body)
-    // console.log(request.body)
+    console.log(request.body)
     // let product = new Product(request.body)
     Product.find(function(err, data){
         if(err){
             // console.log(err)
             return response.status(400).json({msg: "something went wrong"})
         }
-        return response.render('index.ejs', {products:data})
+        return response.render('index.html', {products:data})
     })
    // Products.push(request.body)
    // console.log(Products)

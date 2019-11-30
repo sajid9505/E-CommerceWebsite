@@ -5,7 +5,7 @@ var ProductSchema = new Schema(
     {
        name: {
            type: String,
-           required: "Title is required"
+           required: "Name is required"
        },
        price: {
            type: String,
