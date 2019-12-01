@@ -1,12 +1,12 @@
 
 // Redirecting to cartpage
 $('.card-bag').click(function(){
-    window.open("cart.html","_self")
+    window.open("/cart","_self")
 })
 
 // redirecting to home page from cartpage
 $('.btn-continue').click(function(){
-    window.open("index.html","_self")
+    window.open("/","_self")
 })
 
 //cart number
@@ -19,22 +19,6 @@ else{
     cart_item_length = 0
 }
 $('.card-bag').children("span").text(cart_item_length)
-
-
-// Inputting data into LocalStorage
-$('.btn-full').click(function(){
-    console.log("submit button clicked")
-    var title = $('#InputName').val()
-    var img = $('#InputImage').val()
-    var price = $('#InputPrice').val()
-    var quantity = $('#Quantity').val()
-    var description = $('#InputDescription').val()
-    products.push({title:title,img:img,price:price,quantity:quantity,description:description})
-    console.log(products)
-    
-    window.localStorage.setItem('products',JSON.stringify(products))
-    window.open('index.html',"_self")
-})
 
 //inputting default values
 var products = JSON.parse(window.localStorage.getItem('products'))
@@ -62,6 +46,24 @@ var products = JSON.parse(window.localStorage.getItem('products'))
     insertproduct.children("li").children("div").children("figure").children("div").children("p").text(products[i].price + "$")
     $('.intro-slider').append(insertproduct)
 })
+
+
+// Inputting data into LocalStorage
+$('.btn-full').click(function(){
+    console.log("submit button clicked")
+    var title = $('#InputName').val()
+    var img = $('#InputImage').val()
+    var price = $('#InputPrice').val()
+    var quantity = $('#Quantity').val()
+    var description = $('#InputDescription').val()
+    products.push({title:title,img:img,price:price,quantity:quantity,description:description})
+    console.log(products)
+    
+    window.localStorage.setItem('products',JSON.stringify(products))
+    window.open('index.html',"_self")
+})
+
+
 
 //taking cartnumbers
 var cart_items = []
