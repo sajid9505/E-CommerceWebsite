@@ -4,6 +4,7 @@ var app = express();
 var server = http.Server(app);
 const CURRENT_WORKING_DIR = process.cwd()
 var path = require('path');
+var io = require('socket.io')(http);
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -18,6 +19,19 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //   mongoose.connection.on('error', function(err){
 //       console.log('Could not connect to MongoDB')
 //   })
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+});
+
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
 
 
 app.use('/public', express.static(path.join(CURRENT_WORKING_DIR, 'public')))
